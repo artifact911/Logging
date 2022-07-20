@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Appenders>
+        <Console name="Console" target="">
+            <PatternLayout pattern="%X{ip} %X{user} %d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+<!--        файл для записи мол тут-->
+        <File name="File" fileName="logs/app.log">
+            <PatternLayout>
+                <Pattern>%d %p %c{1.} [%t] %m%n</Pattern>
+            </PatternLayout>
+        </File>
+    </Appenders>
+    <Loggers>
+        <Root level="trace">
+            <AppenderRef ref="Console"/>
+        </Root>
+<!--        задекларируем логер для майора-->
+        <Logger name="comradeMajor" level="warn">
+<!--            писать мол будем в файл-->
+            <AppenderRef ref="File"/>
+        </Logger>
+    </Loggers>
+</Configuration>
